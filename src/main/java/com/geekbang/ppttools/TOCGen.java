@@ -1,18 +1,9 @@
 package com.geekbang.ppttools;
 
-import org.apache.poi.xslf.usermodel.XMLSlideShow;
-import org.apache.poi.xslf.usermodel.XSLFSlide;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTRegularTextRun;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTTextBody;
-import org.openxmlformats.schemas.drawingml.x2006.main.CTTextParagraph;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTGroupShape;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTShape;
-import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
-import java.util.List;
 
 public class TOCGen {
 
@@ -30,7 +21,7 @@ public class TOCGen {
         pw.close();
     }
 
-    private static String genTocFromPPTX(String s) throws Exception {
+    public static String genTocFromPPTX(String s) throws Exception {
         File rootDir = new File(s);
         StringBuilder ret = new StringBuilder("# 0.自我介绍\n\n");
         for (File pptx : rootDir.listFiles()) {
@@ -42,7 +33,7 @@ public class TOCGen {
         return ret.toString();
     }
 
-    private static boolean isThePPT(File pptx) {
+    public static boolean isThePPT(File pptx) {
         String pptxName = pptx.getName();
         if (!pptxName.endsWith("pptx")) {
             return false;
